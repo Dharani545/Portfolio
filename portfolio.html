@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Dharani Murugan - AI Engineer specializing in LLM applications, RAG systems, and voice-enabled AI agents.">
+    <title>Dharani Murugan | AI Engineer</title>
+    <style>
+        :root {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1a2744;
+            --text-primary: #f0f4f8;
+            --text-secondary: #cbd5e1;
+            --accent: #3b82f6;
+            --accent-dark: #1e40af;
+            --border: #334155;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            font-family: var(--font-sans);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            padding-top: env(safe-area-inset-top, 0px);
+            padding-bottom: env(safe-area-inset-bottom, 0px);
+        }
+
+        /* Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 100;
+            padding: 1rem 2rem;
+        }
+
+        nav > div {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        @media (max-width: 600px) {
+            nav {
+                padding: 1rem;
+            }
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.85rem;
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 6rem 2rem 4rem;
+            text-align: left;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 65ch;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+        }
+
+        .hero-meta {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
+        }
+
+        .hero-meta div {
+            color: var(--text-secondary);
+        }
+
+        .hero-meta strong {
+            color: var(--accent);
+            display: block;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.25rem;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.375rem;
+            font-size: 0.95rem;
+            font-weight: 500;
+            text-decoration: none;
+            border: 1px solid transparent;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-dark);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border-color: var(--border);
+            color: var(--text-secondary);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        @media (max-width: 600px) {
+            .hero {
+                padding: 4rem 1.5rem 3rem;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+            .hero-meta {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        /* Section Container */
+        section {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        section:last-of-type {
+            border-bottom: none;
+        }
+
+        section h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            color: var(--text-primary);
+        }
+
+        /* Projects Section */
+        .project {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: var(--bg-secondary);
+            border-left: 3px solid var(--accent);
+            border-radius: 0.375rem;
+        }
+
+        .project-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .project-year {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+
+        .project p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            line-height: 1.7;
+            max-width: 70ch;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .tech-tag {
+            display: inline-block;
+            padding: 0.35rem 0.75rem;
+            background: rgba(59, 130, 246, 0.15);
+            color: var(--accent);
+            border-radius: 0.25rem;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category h3 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            color: var(--text-secondary);
+            padding: 0.5rem 0;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .skill-list li:before {
+            content: "→ ";
+            color: var(--accent);
+            margin-right: 0.5rem;
+        }
+
+        /* Experience Section */
+        .experience-item {
+            margin-bottom: 2.5rem;
+        }
+
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.75rem;
+        }
+
+        .exp-title {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .exp-company {
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        .exp-period {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        .exp-description {
+            color: var(--text-secondary);
+            margin-top: 0.75rem;
+            line-height: 1.7;
+            max-width: 70ch;
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-item h3 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.75rem;
+        }
+
+        .contact-item a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.2s;
+            word-break: break-all;
+        }
+
+        .contact-item a:hover {
+            color: var(--accent);
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            section {
+                padding: 3rem 1.5rem;
+            }
+            section h2 {
+                font-size: 1.5rem;
+            }
+            .exp-header {
+                flex-direction: column;
+            }
+            .exp-period {
+                margin-top: 0.25rem;
+            }
+        }
+
+        /* Accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        a:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
+        }
+
+        button:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div>
+            <a href="#" class="nav-brand">Dharani Murugan</a>
+            <ul class="nav-links">
+                <li><a href="#work">Work</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1>AI Engineer crafting LLM-powered systems that work</h1>
+        <p>I build end-to-end AI applications—from prompt engineering and retrieval-augmented generation to production voice agents. Currently working on structured prompt frameworks and data annotation pipelines at Zensar Technologies.</p>
+        
+        <div class="hero-meta">
+            <div>
+                <strong>Current</strong>
+                Zensar Technologies
+            </div>
+            <div>
+                <strong>Based in</strong>
+                Bengaluru, India
+            </div>
+            <div>
+                <strong>Open to</strong>
+                AI Engineer & Prompt roles
+            </div>
+        </div>
+
+        <div class="hero-cta">
+            <a href="#contact" class="btn btn-primary">Get in touch</a>
+            <a href="mailto:dharanimurugan545@gmail.com" class="btn btn-secondary">Send email</a>
+        </div>
+    </section>
+
+    <section id="work">
+        <h2>Projects & Work</h2>
+        
+        <div class="project">
+            <div class="project-title">Voice-Enabled RAG Support Agent</div>
+            <div class="project-year">2026</div>
+            <p>Built an end-to-end voice assistant that retrieves grounded context from a knowledge base and responds via natural speech. The system handles multi-turn conversations with persistent session state.</p>
+            <p><strong>What I did:</strong> Designed the RAG pipeline using LangChain and Pinecone for semantic retrieval, orchestrated generation through OpenAI/Azure APIs, built a NestJS backend with GraphQL, and containerized all services with Docker.</p>
+            <div class="project-tech">
+                <span class="tech-tag">LangChain</span>
+                <span class="tech-tag">Pinecone</span>
+                <span class="tech-tag">OpenAI API</span>
+                <span class="tech-tag">NestJS</span>
+                <span class="tech-tag">GraphQL</span>
+                <span class="tech-tag">Azure Cognitive Services</span>
+                <span class="tech-tag">Docker</span>
+                <span class="tech-tag">MySQL</span>
+            </div>
+        </div>
+
+        <div class="project">
+            <div class="project-title">LLM-Assisted Auto-Labeling Pipeline</div>
+            <div class="project-year">2025</div>
+            <p>Engineered a Python pipeline using the OpenAI API to automatically label datasets with confidence scoring. Implements human-in-the-loop review flagging and continuously measures labeling accuracy against ground truth.</p>
+            <p><strong>What I did:</strong> Designed the prompt framework for consistent output formatting, implemented confidence thresholding to flag uncertain predictions, built gold-set evaluation modules, and created review workflows for quality assurance.</p>
+            <div class="project-tech">
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">OpenAI API</span>
+                <span class="tech-tag">Prompt Engineering</span>
+                <span class="tech-tag">Data Validation</span>
+            </div>
+        </div>
+
+        <div class="project">
+            <div class="project-title">RAG-Based Document Q&A Chatbot</div>
+            <div class="project-year">2024</div>
+            <p>Developed a retrieval-augmented chatbot that answers questions grounded in uploaded documents. System uses semantic search to retrieve relevant context before generation.</p>
+            <p><strong>What I did:</strong> Architected the retrieval pipeline, integrated vector embeddings with Pinecone, orchestrated LLM responses with LangChain, and built a user-facing interface for document uploads.</p>
+            <div class="project-tech">
+                <span class="tech-tag">LangChain</span>
+                <span class="tech-tag">Pinecone</span>
+                <span class="tech-tag">OpenAI API</span>
+                <span class="tech-tag">RAG</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <h2>Professional Experience</h2>
+        
+        <div class="experience-item">
+            <div class="exp-header">
+                <div>
+                    <div class="exp-title">Prompt Engineer</div>
+                    <div class="exp-company">Zensar Technologies</div>
+                </div>
+                <div class="exp-period">May 2025 – June 2026</div>
+            </div>
+            <div class="exp-description">
+                <strong>Structured Prompt Design:</strong> Created reusable prompt frameworks for LLM-driven annotation and evaluation workflows, improving output consistency and reducing manual review overhead.<br><br>
+                <strong>Data Annotation:</strong> Performed quality review and annotation for EV driving-behavior datasets using SuperAnnotate, including complex video-based labeling workflows.<br><br>
+                <strong>Collaboration:</strong> Worked cross-functionally to define annotation guidelines and prompt specifications aligned with production quality standards.
+            </div>
+        </div>
+
+        <div class="experience-item">
+            <div class="exp-header">
+                <div>
+                    <div class="exp-title">Research & Internship</div>
+                    <div class="exp-company">EI Systems</div>
+                </div>
+                <div class="exp-period">2023 – 2024</div>
+            </div>
+            <div class="exp-description">
+                Contributed to projects in autonomous systems and data processing. Published IEEE research in collaboration with institutional partners.
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2>Skills & Expertise</h2>
+        
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h3>LLM & Prompt Engineering</h3>
+                <ul class="skill-list">
+                    <li>Prompt design & evaluation</li>
+                    <li>OpenAI / Azure OpenAI API</li>
+                    <li>LLaMA, Mistral, GPT models</li>
+                    <li>Chain-of-thought prompting</li>
+                    <li>Few-shot learning</li>
+                    <li>Structured output design</li>
+                </ul>
+            </div>
+
+            <div class="skill-category">
+                <h3>RAG & Search</h3>
+                <ul class="skill-list">
+                    <li>LangChain orchestration</li>
+                    <li>Pinecone vector search</li>
+                    <li>Embedding pipelines</li>
+                    <li>Document retrieval</li>
+                    <li>Semantic search</li>
+                </ul>
+            </div>
+
+            <div class="skill-category">
+                <h3>Backend & APIs</h3>
+                <ul class="skill-list">
+                    <li>Python development</li>
+                    <li>NestJS / Node.js</li>
+                    <li>GraphQL & REST APIs</li>
+                    <li>Microservices architecture</li>
+                    <li>Database design (MySQL)</li>
+                </ul>
+            </div>
+
+            <div class="skill-category">
+                <h3>Voice & Dialogue</h3>
+                <ul class="skill-list">
+                    <li>Speech-to-text integration</li>
+                    <li>Text-to-speech systems</li>
+                    <li>Conversational design</li>
+                    <li>Voice agent architecture</li>
+                </ul>
+            </div>
+
+            <div class="skill-category">
+                <h3>Cloud & Infrastructure</h3>
+                <ul class="skill-list">
+                    <li>Azure services</li>
+                    <li>Docker & containers</li>
+                    <li>App deployment</li>
+                    <li>Cloud functions</li>
+                </ul>
+            </div>
+
+            <div class="skill-category">
+                <h3>Data & Analytics</h3>
+                <ul class="skill-list">
+                    <li>SQL & databases</li>
+                    <li>Spark / PySpark</li>
+                    <li>BigQuery</li>
+                    <li>Tableau, Power BI</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Let's Connect</h2>
+        <p>I'm actively looking for AI Engineer and Prompt Engineering roles. Feel free to reach out.</p>
+        
+        <div class="contact-grid">
+            <div class="contact-item">
+                <h3>Email</h3>
+                <a href="mailto:dharanimurugan545@gmail.com">dharanimurugan545@gmail.com</a>
+            </div>
+            <div class="contact-item">
+                <h3>Phone</h3>
+                <a href="tel:+918438502789">+91 8438502789</a>
+            </div>
+            <div class="contact-item">
+                <h3>LinkedIn</h3>
+                <a href="https://linkedin.com/in/dharanim789" target="_blank">linkedin.com/in/dharanim789</a>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
